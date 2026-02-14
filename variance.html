@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Desmos Graph</title>
+  <script src="https://www.desmos.com/api/v1.11/calculator.js?apiKey=2306cacef998491eae84fd3c83ec36bc"></script>
+  <style>
+    #calculator1 {
+      width: 100%;
+      height: 350px;
+      border: 1px solid #ccc;
+    }
+    #calculator2 {
+      width: 100%;
+      height: 350px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div id="calculator1"></div><div id="calculator2"></div>
+
+  <script>
+
+    const elt1 = document.getElementById('calculator1');
+    const calculator1 = Desmos.GraphingCalculator(elt1, {
+      expressions: true,     // Show the expressions list
+      settingsMenu: false,   // Hide settings menu
+      zoomButtons: true,     // Optional: show zoom controls
+      distributions: true    // Load statistics library
+    });
+    const elt2 = document.getElementById('calculator2');
+    const calculator2 = Desmos.GraphingCalculator(elt2, {
+      expressions: true,     // Show the expressions list
+      settingsMenu: false,   // Hide settings menu
+      zoomButtons: true,     // Optional: show zoom controls
+      distributions: true    // Load statistics library
+    });
+
+
+    // Define the initial state of the calculator
+    state1 = {
+      "version": 11,
+      "randomSeed": "809d8925ab59b0574309762208b3a4ae",
+      "graph": {
+        "viewport": {
+          "xmin": -1.5,
+          "ymin": -0.3,
+          "xmax": 1.5,
+          "ymax": 2
+        },
+        "squareAxes": false
+      },
+      "expressions": {
+        "list": [
+          {
+            "type": "text",
+            "id": "header_distribution",
+            "text": "Define a normal distribution"
+          },
+          {
+            "type": "expression",
+            "id": "distribution",
+            "color": "#388c46",
+            "latex": "P=\\operatorname{normaldist}\\left(\\mu_{true},\\sigma_{true}\\right)"
+          },
+          {
+            "type": "expression",
+            "id": "slider_true_parameter1",
+            "color": "#388c46",
+            "latex": "\\mu_{true}=0",
+            "hidden": true,
+            "slider": {
+              "hardMin": true,
+              "hardMax": true,
+              "min": "-1",
+              "max": "1"
+            }
+          },
+          {
+            "type": "expression",
+            "id": "show_true_parameter1",
+            "color": "#388c46",
+            "latex": "\\left(\\mu_{true},0\\right)",
+            "showLabel": true,
+            "label": "True",
+            "labelOrientation": "above"
+          },
+          {
+            "type": "expression",
+            "id": "slider_true_parameter2",
+            "color": "#2d70b3",
+            "latex": "\\sigma_{true}=0.3",
+            "hidden": true,
+            "slider": {
+              "hardMin": true,
+              "hardMax": true,
+              "min": "0",
+              "max": "1"
+            }
+          },
+          {
+            "type": "expression",
+            "id": "show_true_parameter2_right",
+            "color": "#388c46",
+            "latex": "\\left(\\mu_{true}+\\sigma_{true},0\\right)",
+            "dragMode": "X"
+          },
+          {
+            "type": "expression",
+            "id": "show_true_parameter2_left",
+            "color": "#388c46",
+            "latex": "\\left(\\mu_{true}-\\sigma_{true},0\\right)"
+          },
+          {
+            "type": "expression",
+            "id": "show_true_parameter2_line",
+            "color": "#388c46",
+            "latex": "\\operatorname{polygon}\\left(\\left(\\mu_{true}-\\sigma_{true},0\\right),\\left(\\mu_{true}+\\sigma_{true},0\\right)\\right)",
+            "lineWidth": "10"
+          },
+          {
+            "type": "text",
+            "id": "header_sample",
+            "text": "Sample the distribution"
+          },
+          {
+            "type": "expression",
+            "id": "data",
+            "color": "#388c46",
+            "latex": "d_{ata}=P.\\operatorname{random}\\left(N\\right)"
+          },
+          {
+            "type": "expression",
+            "id": "number_of_samples",
+            "color": "#6042a6",
+            "latex": "N=100",
+            "hidden": true,
+            "slider": {
+              "hardMin": true,
+              "hardMax": true,
+              "min": "1",
+              "max": "1000",
+              "step": "1"
+            }
+          },
+          {
+            "type": "expression",
+            "id": "histogram",
+            "color": "#2d70b3",
+            "latex": "\\operatorname{histogram}\\left(d_{ata},\\frac{\\sigma_{true}}{3}\\right)",
+            "vizProps": {
+              "histogramMode": "density"
+            }
+          },
+          {
+            "type": "text",
+            "id": "header_measurement",
+            "text": "Measure the parameters"
+          },
+          {
+            "type": "expression",
+            "id": "mu_sample",
+            "color": "#c74440",
+            "latex": "\\mu_{sample}=\\operatorname{mean}\\left(d_{ata}\\right)"
+          },
+          {
+            "type": "expression",
+            "id": "show_mu_sample",
+            "color": "#2d70b3",
+            "latex": "\\left(\\mu_{sample},-0.1\\right)",
+            "showLabel": true,
+            "label": "Sample",
+            "labelOrientation": "below",
+            "pointSize": "20",
+            "movablePointSize": "20"
+          },
+          {
+            "type": "expression",
+            "id": "sigma_sample",
+            "color": "#6042a6",
+            "latex": "\\sigma_{sample}=\\operatorname{stdev}\\left(d_{ata}\\right)"
+          },
+          {
+            "type": "expression",
+            "id": "show_sigma_sample",
+            "color": "#2d70b3",
+            "latex": "\\operatorname{polygon}\\left(\\left(\\mu_{sample}-\\sigma_{sample},-0.1\\right),\\left(\\mu_{sample}+\\sigma_{sample},-0.1\\right)\\right)",
+            "lineWidth": "10"
+          }
+        ]
+      },
+      "includeFunctionParametersInRandomSeed": true,
+      "doNotMigrateMovablePointStyle": true
+    };
+    state2 = {
+      "version": 11,
+      "randomSeed": "809d8925ab59b0574309762208b3a4ae",
+      "graph": {
+        "viewport": {
+          "xmin": -0.15,
+          "ymin": -0.02,
+          "xmax": 0.45,
+          "ymax": 0.35
+        },
+        "squareAxes": false
+      },
+      "expressions": {
+        "list": [
+          {
+            "type": "expression",
+            "id": "collected_mu",
+            "latex": "\\mu_{samples}=\\left[\\right]"
+          },
+          {
+            "type": "expression",
+            "id": "collected_sigma",
+            "latex": "\\sigma_{samples}=\\left[\\right]"
+          },
+          {
+            "type": "expression",
+            "id": "mu_histogram",
+            "latex": "\\operatorname{histogram}\\left(\\mu_{samples},\\frac{\\operatorname{stdev}\\left(\\mu_{samples}\\right)}{3}\\right)",
+            "vizProps": {
+              "histogramMode": "relative"
+            }
+          },
+          {
+            "type": "expression",
+            "id": "sigma_histogram",
+            "latex": "\\operatorname{histogram}\\left(\\sigma_{samples},\\frac{\\operatorname{stdev}\\left(\\sigma_{samples}\\right)}{3}\\right)",
+            "vizProps": {
+              "histogramMode": "relative"
+            }
+          }
+        ]
+      },
+      "includeFunctionParametersInRandomSeed": true,
+      "doNotMigrateMovablePointStyle": true
+    };
+
+
+    // Load the JSON state
+    calculator1.setState(state1);
+    calculator2.setState(state2);
+
+    function append(list, value) {
+      // Find the collection of sample means
+      const latex = calculator2.getExpressions().find(e => e.id === list).latex;
+      if (!list) return;
+
+      // Parse the numeric list, which looks like: <list name>=\left[1.23,4.56\right]
+      const [name, string] = latex.split("=");
+      const match = string.match(/\\left\[(.*)\\right\]/);
+      let values = [];
+      if (match && match[1].trim() !== "") {
+        values = match[1].split(',').map(Number);
+      }
+
+      // Append the new mean and stdev
+      values.push(calculator1.expressionAnalysis[value].evaluation.value);
+
+      // Build new latex string
+      const newLatex = `${name}=\\left[${values.join(",")}\\right]`;
+
+      // Update the expression in Desmos
+      calculator2.setExpression({
+        id: list,
+        latex: newLatex
+      });
+    }
+
+    var sigma_sample = calculator1.HelperExpression({"latex": "\\sigma_{sample}"});
+    var mu_sample = calculator1.HelperExpression({"latex": "\\mu_{sample}"});
+    mu_sample.observe('numericValue', function () {
+      append("collected_mu", "mu_sample")
+    });
+    sigma_sample.observe('numericValue', function () {
+      append("collected_sigma", "sigma_sample")
+    });
+    </script>
+</body>
+</html>
