@@ -7,6 +7,9 @@
 		<style type="text/css" media="screen">
 			.inat-widget { font-family: Georgia, serif; padding: 10px; line-height: 1;}
 			.inat-widget-header {margin-bottom: 10px;}
+			.inat-widget-header a { text-decoration: none; }
+			.inat-logo-fallback { display: none; font-family: "Trebuchet MS", Arial, sans-serif; font-size: 44px; line-height: 1; color: #fff; }
+			.inat-logo-fallback .inat-logo-i { color: #73ac13; }
 			.inat-widget td {vertical-align: top; padding-bottom: 10px;}
 			.inat-label { color: #888; }
 			.inat-meta { font-size: smaller; margin-top: 3px; line-height: 1.2;}
@@ -20,12 +23,16 @@
 			.inat-user-body {vertical-align: middle;}
 			.inat-widget td.inat-user-body {vertical-align: middle;}
 			.inat-widget .inat-footer td.inat-value {vertical-align: middle; padding-left: 10px;}
+			.inat-user-image img { border-radius: 50%; width: 48px; height: 48px; object-fit: cover; }
 		</style>
 	</head>
 	<body>
 		<div class="inat-widget">
 			<div class="inat-widget-header">
-			<a href="https://www.inaturalist.org"><img alt="iNaturalist" src="https://www.inaturalist.org/assets/logo-small-white.png" /></a>  
+			<a href="https://www.inaturalist.org">
+				<img alt="iNaturalist" src="https://www.inaturalist.org/assets/logo-small-white.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
+				<span class="inat-logo-fallback" aria-hidden="true"><span class="inat-logo-i">i</span>Naturalist</span>
+			</a>  
 			</div>
 		<script type="text/javascript" charset="utf-8" src="https://www.inaturalist.org/observations/thrien.widget?layout=small&limit=20&order=desc&order_by=observed_on"></script>
 		<table class="inat-footer">
