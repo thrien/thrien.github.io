@@ -40,203 +40,318 @@
 
 			// Define the initial state of the calculator
 			state1 = {
-			  "version": 11,
-			  "randomSeed": "809d8925ab59b0574309762208b3a4ae",
-			  "graph": {
-				"viewport": {
-				  "xmin": -1.5,
-				  "ymin": -0.3,
-				  "xmax": 1.5,
-				  "ymax": 2
-				},
-				"squareAxes": false
-			  },
-			  "expressions": {
-				"list": [
-				  {
-					"type": "text",
-					"id": "header_distribution",
-					"text": "Define a normal distribution"
-				  },
-				  {
-					"type": "expression",
-					"id": "distribution",
-					"color": "#388c46",
-					"latex": "P=\\operatorname{normaldist}\\left(\\mu_{true},\\sigma_{true}\\right)"
-				  },
-				  {
-					"type": "expression",
-					"id": "slider_true_parameter1",
-					"color": "#388c46",
-					"latex": "\\mu_{true}=0",
-					"hidden": true,
-					"slider": {
-					  "hardMin": true,
-					  "hardMax": true,
-					  "min": "-1",
-					  "max": "1"
-					}
-				  },
-				  {
-					"type": "expression",
-					"id": "show_true_parameter1",
-					"color": "#388c46",
-					"latex": "\\left(\\mu_{true},0\\right)",
-					"showLabel": true,
-					"label": "True",
-					"labelOrientation": "above"
-				  },
-				  {
-					"type": "expression",
-					"id": "slider_true_parameter2",
-					"color": "#2d70b3",
-					"latex": "\\sigma_{true}=0.3",
-					"hidden": true,
-					"slider": {
-					  "hardMin": true,
-					  "hardMax": true,
-					  "min": "0",
-					  "max": "1"
-					}
-				  },
-				  {
-					"type": "expression",
-					"id": "show_true_parameter2_right",
-					"color": "#388c46",
-					"latex": "\\left(\\mu_{true}+\\sigma_{true},0\\right)",
-					"dragMode": "X"
-				  },
-				  {
-					"type": "expression",
-					"id": "show_true_parameter2_left",
-					"color": "#388c46",
-					"latex": "\\left(\\mu_{true}-\\sigma_{true},0\\right)"
-				  },
-				  {
-					"type": "expression",
-					"id": "show_true_parameter2_line",
-					"color": "#388c46",
-					"latex": "\\operatorname{polygon}\\left(\\left(\\mu_{true}-\\sigma_{true},0\\right),\\left(\\mu_{true}+\\sigma_{true},0\\right)\\right)",
-					"lineWidth": "10"
-				  },
-				  {
-					"type": "text",
-					"id": "header_sample",
-					"text": "Sample the distribution"
-				  },
-				  {
-					"type": "expression",
-					"id": "data",
-					"color": "#388c46",
-					"latex": "d_{ata}=P.\\operatorname{random}\\left(N\\right)"
-				  },
-				  {
-					"type": "expression",
-					"id": "number_of_samples",
-					"color": "#6042a6",
-					"latex": "N=100",
-					"hidden": true,
-					"slider": {
-					  "hardMin": true,
-					  "hardMax": true,
-					  "min": "1",
-					  "max": "1000",
-					  "step": "1"
-					}
-				  },
-				  {
-					"type": "expression",
-					"id": "histogram",
-					"color": "#2d70b3",
-					"latex": "\\operatorname{histogram}\\left(d_{ata},\\frac{\\sigma_{true}}{3}\\right)",
-					"vizProps": {
-					  "histogramMode": "density"
-					}
-				  },
-				  {
-					"type": "text",
-					"id": "header_measurement",
-					"text": "Measure the parameters"
-				  },
-				  {
-					"type": "expression",
-					"id": "mu_sample",
-					"color": "#c74440",
-					"latex": "\\mu_{sample}=\\operatorname{mean}\\left(d_{ata}\\right)"
-				  },
-				  {
-					"type": "expression",
-					"id": "show_mu_sample",
-					"color": "#2d70b3",
-					"latex": "\\left(\\mu_{sample},-0.1\\right)",
-					"showLabel": true,
-					"label": "Sample",
-					"labelOrientation": "below",
-					"pointSize": "20",
-					"movablePointSize": "20"
-				  },
-				  {
-					"type": "expression",
-					"id": "sigma_sample",
-					"color": "#6042a6",
-					"latex": "\\sigma_{sample}=\\operatorname{stdev}\\left(d_{ata}\\right)"
-				  },
-				  {
-					"type": "expression",
-					"id": "show_sigma_sample",
-					"color": "#2d70b3",
-					"latex": "\\operatorname{polygon}\\left(\\left(\\mu_{sample}-\\sigma_{sample},-0.1\\right),\\left(\\mu_{sample}+\\sigma_{sample},-0.1\\right)\\right)",
-					"lineWidth": "10"
-				  }
-				]
-			  },
-			  "includeFunctionParametersInRandomSeed": true,
-			  "doNotMigrateMovablePointStyle": true
+			    "version": 11,
+			    "randomSeed": "798da968158997eaa43d433a8d5fd9b0",
+			    "graph": {
+			        "viewport": {
+			            "xmin": -1.5,
+			            "ymin": -0.3,
+			            "xmax": 1.5,
+			            "ymax": 2
+			        },
+			        "squareAxes": false,
+			        "__v12ViewportLatexStash": {
+			            "xmin": "-1.5",
+			            "xmax": "1.5",
+			            "ymin": "-0.3",
+			            "ymax": "2"
+			        }
+			    },
+			    "expressions": {
+			        "list": [
+			            {
+			                "type": "folder",
+			                "id": "4",
+			                "title": "Define a normal distribution",
+			                "hidden": true,
+			                "collapsed": true
+			            },
+			            {
+			                "type": "expression",
+			                "id": "slider_true_parameter1",
+			                "folderId": "4",
+			                "color": "#388c46",
+			                "latex": "\\mu_{true}=0",
+			                "hidden": true,
+			                "slider": {
+			                    "hardMin": true,
+			                    "hardMax": true,
+			                    "min": "-1",
+			                    "max": "1"
+			                }
+			            },
+			            {
+			                "type": "expression",
+			                "id": "distribution",
+			                "folderId": "4",
+			                "color": "#388c46",
+			                "latex": "P=\\operatorname{normaldist}\\left(\\mu_{true},\\sigma_{true}\\right)"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "show_true_parameter1",
+			                "folderId": "4",
+			                "color": "#388c46",
+			                "latex": "\\left(\\mu_{true},0\\right)",
+			                "showLabel": true,
+			                "label": "True",
+			                "labelOrientation": "above"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "slider_true_parameter2",
+			                "folderId": "4",
+			                "color": "#2d70b3",
+			                "latex": "\\sigma_{true}=0.287",
+			                "hidden": true,
+			                "slider": {
+			                    "hardMin": true,
+			                    "hardMax": true,
+			                    "min": "0",
+			                    "max": "1"
+			                }
+			            },
+			            {
+			                "type": "expression",
+			                "id": "show_true_parameter2_right",
+			                "folderId": "4",
+			                "color": "#388c46",
+			                "latex": "\\left(\\mu_{true}+\\sigma_{true},0\\right)",
+			                "dragMode": "X"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "show_true_parameter2_left",
+			                "folderId": "4",
+			                "color": "#388c46",
+			                "latex": "\\left(\\mu_{true}-\\sigma_{true},0\\right)"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "show_true_parameter2_line",
+			                "folderId": "4",
+			                "color": "#388c46",
+			                "latex": "\\operatorname{polygon}\\left(\\left(\\mu_{true}-\\sigma_{true},0\\right),\\left(\\mu_{true}+\\sigma_{true},0\\right)\\right)",
+			                "lineWidth": "10"
+			            },
+			            {
+			                "type": "folder",
+			                "id": "5",
+			                "title": "Sample the distribution",
+			                "collapsed": true
+			            },
+			            {
+			                "type": "expression",
+			                "id": "data",
+			                "folderId": "5",
+			                "color": "#388c46",
+			                "latex": "d_{ata}=P.\\operatorname{random}\\left(N\\right)"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "number_of_samples",
+			                "folderId": "5",
+			                "color": "#6042a6",
+			                "latex": "N=100",
+			                "hidden": true,
+			                "slider": {
+			                    "hardMin": true,
+			                    "hardMax": true,
+			                    "min": "1",
+			                    "max": "1000",
+			                    "step": "1"
+			                }
+			            },
+			            {
+			                "type": "expression",
+			                "id": "histogram",
+			                "folderId": "5",
+			                "color": "#2d70b3",
+			                "latex": "\\operatorname{histogram}\\left(d_{ata},\\frac{\\sigma_{true}}{3}\\right)",
+			                "vizProps": {
+			                    "histogramMode": "density"
+			                }
+			            },
+			            {
+			                "type": "folder",
+			                "id": "6",
+			                "title": "Estimate the parameters",
+			                "hidden": true,
+			                "collapsed": true
+			            },
+			            {
+			                "type": "expression",
+			                "id": "mu_sample",
+			                "folderId": "6",
+			                "color": "#c74440",
+			                "latex": "\\mu_{sample}=\\operatorname{mean}\\left(d_{ata}\\right)"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "show_mu_sample",
+			                "folderId": "6",
+			                "color": "#2d70b3",
+			                "latex": "\\left(\\mu_{sample},-0.1\\right)",
+			                "showLabel": true,
+			                "label": "Sample",
+			                "labelOrientation": "below",
+			                "pointSize": "20",
+			                "movablePointSize": "20"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "sigma_sample",
+			                "folderId": "6",
+			                "color": "#6042a6",
+			                "latex": "\\sigma_{sample}=\\operatorname{stdev}\\left(d_{ata}\\right)"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "show_sigma_sample",
+			                "folderId": "6",
+			                "color": "#2d70b3",
+			                "latex": "\\operatorname{polygon}\\left(\\left(\\mu_{sample}-\\sigma_{sample},-0.1\\right),\\left(\\mu_{sample}+\\sigma_{sample},-0.1\\right)\\right)",
+			                "lineWidth": "10"
+			            }
+			        ]
+			    },
+			    "includeFunctionParametersInRandomSeed": true,
+			    "doNotMigrateMovablePointStyle": true
 			};
 			state2 = {
-			  "version": 11,
-			  "randomSeed": "809d8925ab59b0574309762208b3a4ae",
-			  "graph": {
-				"viewport": {
-				  "xmin": -0.15,
-				  "ymin": -0.02,
-				  "xmax": 0.45,
-				  "ymax": 0.35
-				},
-				"squareAxes": false
-			  },
-			  "expressions": {
-				"list": [
-				  {
-					"type": "expression",
-					"id": "collected_mu",
-					"latex": "\\mu_{samples}=\\left[\\right]"
-				  },
-				  {
-					"type": "expression",
-					"id": "collected_sigma",
-					"latex": "\\sigma_{samples}=\\left[\\right]"
-				  },
-				  {
-					"type": "expression",
-					"id": "mu_histogram",
-					"latex": "\\operatorname{histogram}\\left(\\mu_{samples},\\frac{\\operatorname{stdev}\\left(\\mu_{samples}\\right)}{3}\\right)",
-					"vizProps": {
-					  "histogramMode": "relative"
-					}
-				  },
-				  {
-					"type": "expression",
-					"id": "sigma_histogram",
-					"latex": "\\operatorname{histogram}\\left(\\sigma_{samples},\\frac{\\operatorname{stdev}\\left(\\sigma_{samples}\\right)}{3}\\right)",
-					"vizProps": {
-					  "histogramMode": "relative"
-					}
-				  }
-				]
-			  },
-			  "includeFunctionParametersInRandomSeed": true,
-			  "doNotMigrateMovablePointStyle": true
+			    "version": 11,
+			    "randomSeed": "809d8925ab59b0574309762208b3a4ae",
+			    "graph": {
+			        "viewport": {
+			            "xmin": -0.14999999999999997,
+			            "ymin": -0.06104095491895867,
+			            "xmax": 0.45,
+			            "ymax": 0.30895904508104133
+			        },
+			        "squareAxes": false,
+			        "__v12ViewportLatexStash": {
+			            "xmin": "-0.14999999999999997",
+			            "xmax": "0.45",
+			            "ymin": "-0.06104095491895867",
+			            "ymax": "0.30895904508104133"
+			        }
+			    },
+			    "expressions": {
+			        "list": [
+			            {
+			                "type": "folder",
+			                "id": "13",
+			                "title": "Mean",
+			                "collapsed": true
+			            },
+			            {
+			                "type": "expression",
+			                "id": "collected_mu",
+			                "folderId": "13",
+			                "color": "#c74440",
+			                "latex": "\\mu_{samples}=\\left[-0.03285550382671773,-0.02553036776782245,0.023377831877076843,-0.04318989716420625,0.002465568834639189,0.04866407762299645,-0.006552972030499438,0.03408476910840501,0.024801332725473982,-0.045775884840953525,-0.022047464527210864,-0.038325227204856135,-0.023289368530763414,0.02062509888845172,-0.014092629330008287,0.004351141455802127,0.030175995252387386,-0.0328085549575487,-0.00034274953240129026,-0.011491222157726936,0.0030100142835616972,-0.036681896056438415,0.06368079096042814,-0.027783189522568964,0.01598798426373068,0.010360667980014938,-0.008144973077653533,-0.004081459503521272,-0.015212837141625565,-0.016061485903020194,-0.0005333716097987961,-0.020255053414205713,0.05811580033251081,0.03208667997114524,0.009371230089038481,-0.0733084723714835,0.006032127010650607,-0.040407812594629736,0.020307528033296468,-0.00859975181922576,-0.00782547417946556,-0.03675608569042476,-0.019118348244897374,-0.02435323910740934,0.05678884188168814,-0.007319996407524098,-0.014783365577793507,-0.033211438877485795,0.03166305482238702,0.01437098723171236,0.014081275148808138,-0.025642071035987035,0.04350390769219039,0.0219365558191915,-0.022260908219885155,0.009994982531602109,0.020938591078168332,-0.0009479137510076323,0.0025166469482422603,0.019961034185391812,-0.07254604034240726,0.010288780552950134,-0.03493151601136696,-0.047054772789782436,-0.04268123676243718,-0.0016504884595015023,-0.011983895076712124,-0.03198389507671211,-0.10198389507671213,-0.17198389507671216,-0.07198389507671209,0.11801610492328792,0.14101610492328784,0.11801610492328792,-0.0019838950767121,-0.011983895076712124,-0.01278282141515958,-0.014380674092054528,-0.021331333236547564,-0.02197047430730554,-0.019174232122739374,-0.018894607904282733,-0.01877476895351564,-0.018375305784291907,-0.017975842615068162,-0.017576379445844444,-0.015579063599725752,-0.014101049873597915,-0.012503197196702974,-0.011584431907488379,-0.01146459295672127\\right]"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "mu_histogram",
+			                "folderId": "13",
+			                "color": "#388c46",
+			                "latex": "\\operatorname{histogram}\\left(\\mu_{samples},\\frac{\\operatorname{stdev}\\left(\\mu_{samples}\\right)}{3}\\right)",
+			                "vizProps": {
+			                    "histogramMode": "relative"
+			                }
+			            },
+			            {
+			                "type": "expression",
+			                "id": "2",
+			                "folderId": "13",
+			                "color": "#000000",
+			                "latex": "\\mu=\\operatorname{mean}\\left(\\mu_{samples}\\right)"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "3",
+			                "folderId": "13",
+			                "color": "#c74440",
+			                "latex": "\\sigma_{mu}=\\operatorname{stdev}\\left(\\mu_{samples}\\right)"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "6",
+			                "folderId": "13",
+			                "color": "#388c46",
+			                "latex": "\\operatorname{polygon}\\left(\\left(\\mu-\\sigma_{mu},0\\right),\\left(\\mu+\\sigma_{mu},0\\right)\\right)",
+			                "lineWidth": "10"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "4",
+			                "folderId": "13",
+			                "color": "#388c46",
+			                "latex": "\\left(\\mu,0\\right)",
+			                "pointOutline": true,
+			                "pointSize": "18",
+			                "movablePointSize": "18"
+			            },
+			            {
+			                "type": "folder",
+			                "id": "12",
+			                "title": "Standard deviation",
+			                "collapsed": true
+			            },
+			            {
+			                "type": "expression",
+			                "id": "collected_sigma",
+			                "folderId": "12",
+			                "color": "#2d70b3",
+			                "latex": "\\sigma_{samples}=\\left[0.3658241203833452,0.2866167856369583,0.3140123411463497,0.29196991468008776,0.3155807957387547,0.270337926140612,0.2822120387546205,0.3017719200076055,0.26050679896839657,0.2852823114345711,0.2959985059416895,0.30553660478382555,0.28661733069085,0.29636797124859615,0.32427880413031196,0.3110281272180943,0.27951103677404765,0.3014547524963357,0.30222578245123116,0.2895690584043082,0.32400059642237866,0.30631657923322636,0.3115353379428749,0.32757977616574957,0.30825102216053596,0.3018910983109231,0.2795872023492798,0.30919168347951587,0.29542374148955736,0.29770076691233144,0.3281374185955164,0.32135278305582027,0.2829260582063315,0.2977115371973627,0.28325589805667445,0.30124516984460475,0.32434200753093395,0.2678735435062533,0.3021540008365367,0.27841182016794724,0.28855998174868064,0.3255679508895512,0.30671451422101725,0.32567367915641837,0.24913942252621518,0.3130896778278241,0.2750973536099945,0.2802444924157846,0.298413006819239,0.27938181134358026,0.32664745831018505,0.2622136532767285,0.27941528672157057,0.302745870711256,0.31182226151421594,0.2977871162969092,0.29643860860997956,0.27328679297764474,0.28392203983270525,0.29741787414037923,0.3365284766183449,0.27489296321160184,0.29389695138751487,0.3368716160287183,0.27148188231766646,0.2918445905232306,0.276214943414572,0.2762149434145719,0.276214943414572,0.2946292729755434,0.3314579320974864,0.4916625992779382,0.5063940629267154,0.44194390946331513,0.43549889411697534,0.43273674468282947,0.42352957990234374,0.4143224151218581,0.4051152503413723,0.35907942643894364,0.32501291675114635,0.28818425762920347,0.26700777863408626,0.2642456291999405\\right]"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "sigma_histogram",
+			                "folderId": "12",
+			                "color": "#6042a6",
+			                "latex": "\\operatorname{histogram}\\left(\\sigma_{samples},\\frac{\\operatorname{stdev}\\left(\\sigma_{samples}\\right)}{3}\\right)",
+			                "vizProps": {
+			                    "histogramMode": "relative"
+			                }
+			            },
+			            {
+			                "type": "expression",
+			                "id": "7",
+			                "folderId": "12",
+			                "color": "#000000",
+			                "latex": "\\mu_{sigma}=\\operatorname{mean}\\left(\\sigma_{samples}\\right)"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "9",
+			                "folderId": "12",
+			                "color": "#2d70b3",
+			                "latex": "\\sigma_{sigma}=\\operatorname{stdev}\\left(\\sigma_{samples}\\right)"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "11",
+			                "folderId": "12",
+			                "color": "#6042a6",
+			                "latex": "\\operatorname{polygon}\\left(\\left(\\mu_{sigma}-\\sigma_{sigma},0\\right),\\left(\\mu_{sigma}+\\sigma_{sigma},0\\right)\\right)",
+			                "lineWidth": "10"
+			            },
+			            {
+			                "type": "expression",
+			                "id": "10",
+			                "folderId": "12",
+			                "color": "#6042a6",
+			                "latex": "\\left(\\mu_{sigma},0\\right)",
+			                "pointOutline": true,
+			                "pointSize": "18",
+			                "movablePointSize": "18"
+			            }
+			        ]
+			    },
+			    "includeFunctionParametersInRandomSeed": true,
+			    "doNotMigrateMovablePointStyle": true
 			};
 
 			// Load the JSON state
